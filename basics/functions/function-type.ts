@@ -3,15 +3,18 @@ function add(n1: number, n2: number) {
   }
   
   function printResult(num: number): void {
-    console.log('Result: ' + num);
+    console.log('Output of Print Result: ' + num);
   }
   
-  function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+  // Function with callBack function in argument
+  // () => this is function type definition
+  // callBack accept number as an argument and return nothing -- void
+  function addWithCallback(n1: number, n2: number, callBack: (num: number) => void) {
     const result = n1 + n2;
-    cb(result);
+    callBack(result);
   }
   
-  printResult(add(5, 12));
+  printResult(add(5, 6));
   
     // This is function type created using arrow notation
     // Accept 2 parameters as number
@@ -21,11 +24,11 @@ function add(n1: number, n2: number) {
   // add satisfy combinedValue condition
   combineValues = add;
 
-  //This is not accepted
+  //This is not accepted as printResult is accepted one argument num
   //combineValues = printResult;
 
-  console.log(combineValues(8, 8));
+  console.log("Output of combined Values: ",combineValues(5, 5));
     
-  addAndHandle(10, 20, (result) => {
-    console.log(result);
+  addWithCallback(5, 10, (result) => {
+    console.log("Output of Add With Callback",result);
   });
